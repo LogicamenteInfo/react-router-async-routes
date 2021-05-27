@@ -5,7 +5,7 @@
         "browsers": ["last 2 versions", "safari >= 7"]
       }
     }],
-    "react"
+    "@babel/preset-react"
   ],
   "plugins": [
     "@babel/plugin-transform-runtime",

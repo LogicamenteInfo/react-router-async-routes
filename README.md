@@ -1,14 +1,14 @@
-# Async Routes and transitions for React Router v4
+# Async Routes and transitions for React Router v4 & v5
 
 Extend \<Route> API to include async rendering and transitions. This is useful to do webpack code-splitting and fetching essential data before rendering.
 
 ## Install
 
-`npm install @simple-contacts/react-router-async-routes --save`
+`npm install @logicamente.info/react-router-async-routes --save`
 
 or
 
-`yarn add @simple-contacts/react-router-async-routes`
+`yarn add @logicamente.info/react-router-async-routes`
 
 ## Usage
 
@@ -105,16 +105,3 @@ app.use(async function(req, res) {
 To run the example do a yarn start. You can view the example using the webpack-dev-server via http://localhost:8080. When changes are detected to server or client, the service is restarted automatically (via pm2).
 
 If you want to see the example with bundled files. Run `yarn run build-example`, then `yarn start`, and access via http://localhost:8081.
-
-
-## Publishing
-After merging changes...
-
-```
-git fetch
-git checkout master
-git pull
-yarn publish
-```
-
-Select a new version, then push the new commit (i.e. https://github.com/SimpleContacts/react-router-async-routes/commit/c54affa27d6c620f4d05fa1a48206b32085af6db). Update your client to use the new version.

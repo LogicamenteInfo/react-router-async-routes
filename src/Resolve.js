@@ -1,7 +1,7 @@
 import React from 'react';
 import { matchPath } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import traverse from '@simple-contacts/react-traverse';
+import traverse from '@logicamente.info/react-traverse';
 
 import { AsyncHandler } from './Route';
 import Route, { resolveProps } from './Route';

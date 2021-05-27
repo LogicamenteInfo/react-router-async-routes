@@ -1,29 +1,32 @@
 {
-  "name": "@simple-contacts/react-router-async-routes",
-  "version": "0.6.0",
-  "description": "Async Routes and transitions for React Router v4",
+  "name": "@logicamente.info/react-router-async-routes",
+  "version": "1.0.0",
+  "description": "Async Routes and transitions for React Router v4-5",
   "main": "dist/index.js",
+  "license": "MIT",
   "dependencies": {
-    "@simple-contacts/react-traverse": "2.0.4"
+    "@logicamente.info/react-traverse": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
-    "@babel/node": "7.2.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-runtime": "7.4.4",
-    "@babel/polyfill": "7.4.4",
+    "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/register": "^7.13.16",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-es2015-modules-umd": "7.0.0-beta.3",
     "babel-preset-react": "^7.0.0-beta.3",
+    "concurrently": "^6.2.0",
     "express": "^4.15.3",
     "html-webpack-plugin": "^3.2.0",
-    "isomorphic-fetch": "^2.2.1",
+    "isomorphic-fetch": "^3.0.0",
     "jest": "^24.8.0",
-    "pm2": "3.5.0",
+    "nodemon": "^2.0.7",
     "prettier": "1.17.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -36,15 +39,17 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "pm2 start ./example/ecosystem.config.js && echo '\n\nYou can view the example by visiting http://localhost:8080. Run \"yarn run stop\" to stop the example. \nUse pm2 to manage and see status of running node services (\"pm2 --help\")\n\n'",
+    "start": "concurrently \"npm run server:back\" \"npm run server:front\"",
     "stop": "pm2 stop ./example/ecosystem.config.js",
     "build-example": "webpack --config ./example/webpack.config.babel.js",
-    "prepublish": "babel src -d dist --ignore '**/*.test.js'"
+    "prepublishOnly": "babel src -d dist --ignore '**/*.test.js'",
+    "server:back": "nodemon --exec babel-node ./example/server.js",
+    "server:front": "webpack-dev-server --hot --config=./example/webpack.config.babel.js"
   },
   "author": "Steve Farthing",
   "peerDependencies": {
-    "react": "^16",
-    "react-router": "^4",
-    "react-transition-group": "^1"
+    "react": "^16 || ^17",
+    "react-router": "^4 || ^5",
+    "react-transition-group": ">=4"
   }
 }

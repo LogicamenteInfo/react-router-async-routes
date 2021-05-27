@@ -1,3 +1,5 @@
+require('@babel/register');
+
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -25,22 +27,27 @@ module.exports = {
       templateContent: `
     <head>
       <style>
+        .wrapper {
+          position: relative;
+        }
+
+        .wrapper > div {
+          position: absolute;
+          width: 100%;
+        }
         .alert-enter {
-          opacity: 0;
-          transform: scale(0.9);
+          opacity: 0.01;
         }
         .alert-enter-active {
           opacity: 1;
-          transform: translateX(0);
-          transition: opacity 300ms, transform 300ms;
+          transition: opacity 500ms ease-in;
         }
         .alert-exit {
           opacity: 1;
         }
         .alert-exit-active {
-          opacity: 0;
-          transform: scale(0.9);
-          transition: opacity 300ms, transform 300ms;
+          opacity: 0.01;
+          transition: opacity 300ms ease-in;
         }
       </style>
     </head>
@@ -60,14 +67,14 @@ module.exports = {
           babelrc: false,
           presets: [
             [
-              '@babel/env',
+              '@babel/preset-env',
               {
                 targets: {
                   browsers: ['last 2 versions', 'safari >= 7'],
                 },
               },
             ],
-            'react',
+            '@babel/preset-react',
           ],
           plugins: [
             '@babel/plugin-transform-runtime',
